@@ -1,0 +1,81 @@
+﻿@page "/rol/index"
+@using ProyectoStore.EN;
+@inject HttpClient Http;
+@inject NavigationManager NavManager;
+<PageTitle>Roles</PageTitle>
+<button class="btn btn-primary" @onclick="newRol">
+    Nuevo Rol
+</button>
+<h3>Buscar</h3>
+
+@if (roles == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th colspan="3">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rol in roles)
+            {
+                <tr>
+                    <td>@rol.Nombre</td>
+                    <td>
+                        <button class="btn btn-success"
+                        @onclick="(() => goModify(rol.Id))">
+                            Modificar
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger"
+                        @onclick="(() => goDelete(rol.Id))">
+                            Eliminar
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info"
+                        @onclick="(() => goDetail(rol.Id))">
+                            Ver
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Rol[]? roles;
+
+    protected override async Task OnInitializedAsync()
+    {
+        roles = await Http.GetFromJsonAsync<Rol[]>("Rol");
+    }
+
+    void newRol()
+    {
+        NavManager.NavigateTo("/rol/registerrol");
+    }
+
+    void goModify(int pId)
+    {
+        NavManager.NavigateTo($"/rol/modifyrol/{pId}");
+    }
+
+    void goDelete(int pId)
+    {
+        NavManager.NavigateTo($"/rol/deleterol/{pId}");
+    }
+
+    void goDetail(int pId)
+    {
+        NavManager.NavigateTo($"/rol/detailrol/{pId}");
+    }
+}
+

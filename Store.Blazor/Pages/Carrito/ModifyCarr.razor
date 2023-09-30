@@ -1,0 +1,75 @@
+﻿@page "/carrito/modifycarr/{pId:int}"
+@using ProyectoStore.EN;
+@inject HttpClient Http;
+@inject NavigationManager NavManager
+
+
+
+<h3>ModifyCarr</h3>
+<input type="hidden" @bind-value="carrito.Id" />
+<div class="row">
+    <div class="col-sm-12">
+        <label class="form-label">NombreProducto</label>
+        <input type="text" class="form-control" @bind-value="carrito.NombreDeProducto" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <button class="btn btn-primary" @onclick="ModificarCarrito" >Guardar</button>
+        <button class="btn btn-secondary" @onclick="returnIndex" >Regresar</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <span style="color:red; font-weight:bold;">@resultadoModificar</span>
+    </div>
+</div>
+
+
+@code {
+
+    Carrito carrito = new Carrito();
+    string resultadoModificar = "";
+
+    [Parameter]
+    public int pId { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (pId != 0)
+        {
+            carrito = await Http.GetFromJsonAsync<Carrito>("Carrito/" + pId);
+        }
+        else
+        {
+            resultadoModificar = "No se encontro el registro seleccionado";
+        }
+    }
+
+    public async Task ModificarCarrito()
+    {
+        try
+        {
+            var resultado = await Http.PutAsJsonAsync<Carrito>("Carrito/" + carrito.Id, carrito);
+
+            if (Convert.ToInt32(resultado.StatusCode) == 200)
+            {
+                returnIndex();
+            }
+            else
+            {
+                resultadoModificar = "Error al Modificar el Carrito";
+            }
+        }
+        catch (Exception ex)
+        {
+            resultadoModificar = "Ocurrio un error interno";
+        }
+    }
+
+    void returnIndex()
+    {
+        NavManager.NavigateTo("/carrito/index");
+    }
+
+}

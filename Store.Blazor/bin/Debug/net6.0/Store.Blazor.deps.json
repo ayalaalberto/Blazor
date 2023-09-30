@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Store.Blazor/1.0.0": {
+        "dependencies": {
+          "ProyectoStore.EN": "1.0.0.0"
+        },
+        "runtime": {
+          "Store.Blazor.dll": {}
+        }
+      },
+      "ProyectoStore.EN/1.0.0.0": {
+        "runtime": {
+          "ProyectoStore.EN.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Store.Blazor/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ProyectoStore.EN/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

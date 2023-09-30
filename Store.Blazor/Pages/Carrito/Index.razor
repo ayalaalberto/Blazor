@@ -1,0 +1,114 @@
+﻿@page "/carrito/index"
+@using ProyectoStore.EN;
+@inject HttpClient Http;
+@inject NavigationManager NavManager;
+<PageTitle>Carrito</PageTitle>
+<button class="btn btn-primary" @onclick="newCarrito">Nuevo Carrito</button>
+    
+<h3>Buscar</h3>
+
+@if (carritos == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>NombreDeProducto</th>
+                <th colspan="3">Acciones</th>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <th colspan="3">Acciones</th>
+            </tr>
+            <tr>
+                <th>Envio</th>
+                <th colspan="3">Acciones</th>
+            </tr>
+            <tr>
+                <th>TotalApagar</th>
+                <th colspan="3">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var carrito in carritos)
+            {
+                <tr>
+                    <td>@carrito.NombreDeProducto</td>
+                    <td>
+                        <button class="btn btn-success"
+                        @onclick="(() => goModify(carrito.Id))">
+                            Modificar
+                        </button>
+                    </td>
+                          <td>@carrito.Precio</td>
+                    <td>
+                        <button class="btn btn-success"
+                        @onclick="(() => goModify(carrito.Id))">
+                            Modificar
+                        </button>
+                    </td>
+                    <td>@carrito.Envio</td>
+                    <td>
+                        <button class="btn btn-success"
+                        @onclick="(() => goModify(carrito.Id))">
+                            Modificar
+                        </button>
+                    </td>
+                    <td>@carrito.TotalApagar</td>
+                    <td>
+                        <button class="btn btn-success"
+                        @onclick="(() => goModify(carrito.Id))">
+                            Modificar
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger"
+                        @onclick="(() => goDelete(carrito.Id))">
+                            Eliminar
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info"
+                        @onclick="(() => goDetail(carrito.Id))">
+                            Ver
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private Carrito[]? carritos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        carritos = await Http.GetFromJsonAsync<Carrito[]>("Carrito");
+    }
+
+    void newCarrito()
+    {
+        NavManager.NavigateTo("/carrito/registercarr");
+    }
+
+    void goModify(int pId)
+    {
+        NavManager.NavigateTo($"/carrito/modifycarr/{pId}");
+    }
+
+    void goDelete(int pId)
+    {
+        NavManager.NavigateTo($"/carrito/deletecarr/{pId}");
+    }
+
+    void goDetail(int pId)
+    {
+        NavManager.NavigateTo($"/carrito/detailcarr/{pId}");
+    }
+
+}
