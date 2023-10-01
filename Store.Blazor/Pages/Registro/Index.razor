@@ -1,13 +1,13 @@
-﻿@page "/carrito/index"
+﻿@page "/registro/index"
 @using ProyectoStore.EN;
 @inject HttpClient Http;
 @inject NavigationManager NavManager;
-<PageTitle>Carrito</PageTitle>
-<button class="btn btn-primary" @onclick="newCarrito">Nuevo Carrito</button>
-    
+<PageTitle>Registro</PageTitle>
+<button class="btn btn-primary" @onclick="newRegistro">Nuevo registro</button>
+
 <h3>Buscar</h3>
 
-@if (carritos == null)
+@if (registros == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -16,41 +16,41 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>NombreDeProducto</th>
-                   <th>Precio</th>
-                <th>Envio</th>
-                <th>TotalApagar</th>
+                <th>Correo</th>
+                <th>Usuario</th>
+                <th>Contraseña</th>
+             
                 <th colspan="3">Acciones</th>
             </tr>
-          
+
         </thead>
         <tbody>
-            @foreach (var carrito in carritos)
+            @foreach (var registro in registros)
             {
                 <tr>
-                    <td>@carrito.NombreDeProducto</td>
-                    <td>@carrito.Precio</td>
-                    <td>@carrito.Envio</td>
-                    <td>@carrito.TotalApagar</td>
+                    <td>@registro.Correo</td>
+                    <td>@registro.Usuario</td>
+                    <td>@registro.Contraseña</td>
+                  
                     <td>
                         <button class="btn btn-success"
-                        @onclick="(() => goModify(carrito.Id))">
+                        @onclick="(() => goModify(registro.Id))">
                             Modificar
                         </button>
                     </td>
                     <td>
                         <button class="btn btn-danger"
-                        @onclick="(() => goDelete(carrito.Id))">
+                        @onclick="(() => goDelete(registro.Id))">
                             Eliminar
                         </button>
                     </td>
                     <td>
                         <button class="btn btn-info"
-                        @onclick="(() => goDetail(carrito.Id))">
+                        @onclick="(() => goDetail(registro.Id))">
                             Ver
                         </button>
                     </td>
-                  
+
                 </tr>
             }
         </tbody>
@@ -59,31 +59,31 @@ else
 
 @code {
 
-    private Carrito[]? carritos;
+    private Registro[]? registros;
 
     protected override async Task OnInitializedAsync()
     {
-        carritos = await Http.GetFromJsonAsync<Carrito[]>("Carrito");
+        registros = await Http.GetFromJsonAsync<Registro[]>("Registro");
     }
 
-    void newCarrito()
+    void newRegistro()
     {
-        NavManager.NavigateTo("/carrito/registercarr");
+        NavManager.NavigateTo("/registro/registerre");
     }
 
     void goModify(int pId)
     {
-        NavManager.NavigateTo($"/carrito/modifycarr/{pId}");
+        NavManager.NavigateTo($"/registro/modifyre/{pId}");
     }
 
     void goDelete(int pId)
     {
-        NavManager.NavigateTo($"/carrito/deletecarr/{pId}");
+        NavManager.NavigateTo($"/registro/deletere/{pId}");
     }
 
     void goDetail(int pId)
     {
-        NavManager.NavigateTo($"/carrito/detailcarr/{pId}");
+        NavManager.NavigateTo($"/registro/detailre/{pId}");
     }
 
 }

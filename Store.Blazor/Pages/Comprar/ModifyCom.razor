@@ -1,44 +1,44 @@
-﻿@page "/carrito/modifycarr/{pId:int}"
+﻿@page "/comprar/modifycarr/{pId:int}"
 @using ProyectoStore.EN;
 @inject HttpClient Http;
 @inject NavigationManager NavManager
 
 
 
-<h3>ModifyCarr</h3>
-<input type="hidden" @bind-value="carrito.Id" />
+<h3>ModifyCompra</h3>
+<input type="hidden" @bind-value="comprar.Id" />
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">NombreProducto</label>
-        <input type="text" class="form-control" @bind-value="carrito.NombreDeProducto" />
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" @bind-value="comprar.Nombre" />
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">Precio</label>
-        <input type="text" class="form-control" @bind-value="carrito.Precio" />
+        <label class="form-label">Apellido</label>
+        <input type="text" class="form-control" @bind-value="comprar.Apellido" />
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">Envio</label>
-        <input type="text" class="form-control" @bind-value="carrito.Envio" />
+        <label class="form-label">Telefono</label>
+        <input type="text" class="form-control" @bind-value="comprar.Telefono" />
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">TotalApagar</label>
-        <input type="text" class="form-control" @bind-value="carrito.TotalApagar" />
+        <label class="form-label">Direccion</label>
+        <input type="text" class="form-control" @bind-value="comprar.Direccion" />
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm-12">
-        <button class="btn btn-primary" @onclick="ModificarCarrito" >Guardar</button>
-        <button class="btn btn-secondary" @onclick="returnIndex" >Regresar</button>
+        <button class="btn btn-primary" @onclick="Modificarcomprar">Guardar</button>
+        <button class="btn btn-secondary" @onclick="returnIndex">Regresar</button>
     </div>
 </div>
 <div class="row">
@@ -50,7 +50,7 @@
 
 @code {
 
-    Carrito carrito = new Carrito();
+    Comprar comprar = new Comprar();
     string resultadoModificar = "";
 
     [Parameter]
@@ -60,7 +60,7 @@
     {
         if (pId != 0)
         {
-            carrito = await Http.GetFromJsonAsync<Carrito>("Carrito/" + pId);
+            comprar = await Http.GetFromJsonAsync<Comprar>("Comprar/" + pId);
         }
         else
         {
@@ -68,11 +68,11 @@
         }
     }
 
-    public async Task ModificarCarrito()
+    public async Task Modificarcomprar()
     {
         try
         {
-            var resultado = await Http.PutAsJsonAsync<Carrito>("Carrito/" + carrito.Id, carrito);
+            var resultado = await Http.PutAsJsonAsync<Comprar>("Comprar/" + comprar.Id, comprar);
 
             if (Convert.ToInt32(resultado.StatusCode) == 200)
             {
@@ -80,7 +80,7 @@
             }
             else
             {
-                resultadoModificar = "Error al Modificar el Carrito";
+                resultadoModificar = "Error al Modificar el comprar";
             }
         }
         catch (Exception ex)
@@ -91,7 +91,7 @@
 
     void returnIndex()
     {
-        NavManager.NavigateTo("/carrito/index");
+        NavManager.NavigateTo("/comprar/index");
     }
 
 }

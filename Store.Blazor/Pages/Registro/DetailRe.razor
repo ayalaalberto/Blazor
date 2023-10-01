@@ -1,0 +1,86 @@
+﻿@page "/registro/detailre/{pId:int}"
+@using ProyectoStore.EN;
+@inject HttpClient Http
+@inject NavigationManager NavManager;
+
+<h3>DetailCarr</h3>
+<input type="hidden" @bind-value="registro.Id" />
+<div class="row">
+    <div class="col-sm-12">
+        <label class="form-label">Correo</label>
+        <input type="text" class="form-control" @bind-value="registro.Correo" readonly />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="form-label">Usuario</label>
+        <input type="text" class="form-control" @bind-value="registro.Usuario" readonly />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="form-label">Contraseña</label>
+        <input type="text" class="form-control" @bind-value="registro.Contraseña" readonly />
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <button class="btn btn-success" @onclick="EnviarModificarregistro">Ir a Modificar</button>
+        <button class="btn btn-secondary" @onclick="returnIndex">Regresar</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <span style="color:red; font-weight:bold;">@resultadoModificar</span>
+    </div>
+</div>
+
+@code {
+
+    Registro registro = new Registro();
+    string resultadoModificar = "";
+
+    [Parameter]
+    public int pId { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (pId != 0)
+        {
+            registro = await Http.GetFromJsonAsync<Registro>("Registro/" + pId);
+        }
+        else
+        {
+            resultadoModificar = "No se encontro el registro seleccionado";
+        }
+    }
+
+    public async Task EnviarModificarregistro()
+    {
+        try
+        {
+            if (pId != 0)
+            {
+                NavManager.NavigateTo($"/registro/modifycarr/{pId}");
+            }
+            else
+            {
+                resultadoModificar = "No se seleccion un Registro";
+            }
+        }
+        catch (Exception ex)
+        {
+            resultadoModificar = "Ocurrio un error interno";
+        }
+    }
+
+    void returnIndex()
+    {
+        NavManager.NavigateTo("/registro/index");
+    }
+
+}

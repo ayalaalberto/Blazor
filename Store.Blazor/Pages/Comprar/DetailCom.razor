@@ -1,41 +1,41 @@
-﻿@page "/carrito/detailcarr/{pId:int}"
+﻿@page "/comprar/detailcarr/{pId:int}"
 @using ProyectoStore.EN;
 @inject HttpClient Http
 @inject NavigationManager NavManager;
 
-<h3>DetailCarr</h3>
-<input type="hidden" @bind-value="carrito.Id" />
+<h3>DetailCompra</h3>
+<input type="hidden" @bind-value="comprar.Id" />
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">NombreDeProducto</label>
-        <input type="text" class="form-control" @bind-value="carrito.NombreDeProducto" readonly />
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" @bind-value="comprar.Nombre" readonly />
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">Precio</label>
-        <input type="text" class="form-control" @bind-value="carrito.Precio" readonly />
+        <label class="form-label">Apellido</label>
+        <input type="text" class="form-control" @bind-value="comprar.Apellido" readonly />
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">Envio</label>
-        <input type="text" class="form-control" @bind-value="carrito.Envio" readonly />
+        <label class="form-label">Telefono</label>
+        <input type="text" class="form-control" @bind-value="comprar.Telefono" readonly />
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">TotalApagar</label>
-        <input type="text" class="form-control" @bind-value="carrito.TotalApagar" readonly />
+        <label class="form-label">Direccion</label>
+        <input type="text" class="form-control" @bind-value="comprar.Direccion" readonly />
     </div>
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <button class="btn btn-success" @onclick="EnviarModificarCarrito" >Ir a Modificar</button>
-        <button class="btn btn-secondary" @onclick="returnIndex" >Regresar</button>
+        <button class="btn btn-success" @onclick="EnviarModificarcomprar">Ir a Modificar</button>
+        <button class="btn btn-secondary" @onclick="returnIndex">Regresar</button>
     </div>
 </div>
 <div class="row">
@@ -46,7 +46,7 @@
 
 @code {
 
-    Carrito carrito = new Carrito();
+    Comprar comprar = new Comprar();
     string resultadoModificar = "";
 
     [Parameter]
@@ -56,7 +56,7 @@
     {
         if (pId != 0)
         {
-            carrito = await Http.GetFromJsonAsync<Carrito>("Carrito/" + pId);
+            comprar = await Http.GetFromJsonAsync<Comprar>("Comprar/" + pId);
         }
         else
         {
@@ -64,13 +64,13 @@
         }
     }
 
-    public async Task EnviarModificarCarrito()
+    public async Task EnviarModificarcomprar()
     {
         try
         {
             if (pId != 0)
             {
-                NavManager.NavigateTo($"/carrito/modifycarr/{pId}");
+                NavManager.NavigateTo($"/comprar/modifycarr/{pId}");
             }
             else
             {
@@ -85,7 +85,7 @@
 
     void returnIndex()
     {
-        NavManager.NavigateTo("/carrito/index");
+        NavManager.NavigateTo("/comprar/index");
     }
 
 }

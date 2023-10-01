@@ -1,43 +1,43 @@
-﻿@page "/carrito/registercarr"
+﻿@page "/comprar/registercarr"
 @using ProyectoStore.EN;
 @inject HttpClient Http
 @inject NavigationManager NavManager
 
-<h3>RegisterCarrito</h3>
+<h3>RegisterCompra</h3>
 
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">NombreProducto</label>
-        <input type="text" class="form-control" @bind="carrito.NombreDeProducto" />
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" @bind="comprar.Nombre" />
     </div>
 </div>
 
 
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">Precio</label>
-        <input type="text" class="form-control" @bind="carrito.Precio" />
+        <label class="form-label">Apellido</label>
+        <input type="text" class="form-control" @bind="comprar.Apellido" />
     </div>
 </div>
 
 
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">Envio</label>
-        <input type="text" class="form-control" @bind="carrito.Envio" />
+        <label class="form-label">Telefono</label>
+        <input type="text" class="form-control" @bind="comprar.Telefono" />
     </div>
 </div>
 
 
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">TotalApaga</label>
-        <input type="text" class="form-control" @bind="carrito.TotalApagar" />
+        <label class="form-label">Direccion</label>
+        <input type="text" class="form-control" @bind="comprar.Direccion" />
     </div>
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <button class="btn btn-primary" @onclick="RegistrarCarrito">Guardar</button>
+        <button class="btn btn-primary" @onclick="Registrarcomprar">Guardar</button>
         <button class="btn btn-secondary" @onclick="returnIndex">Regresar</button>
     </div>
 </div>
@@ -47,14 +47,14 @@
     </div>
 </div>
 @code {
-    Carrito carrito = new Carrito();
+    Comprar comprar = new Comprar();
     string resultadoRegistro = "";
 
-    public async Task RegistrarCarrito()
+    public async Task Registrarcomprar()
     {
         try
         {
-            var resultado = await Http.PostAsJsonAsync<Carrito>("Carrito", carrito);
+            var resultado = await Http.PostAsJsonAsync<Comprar>("Comprar", comprar);
 
             if (Convert.ToInt32(resultado.StatusCode) == 200)
             {
@@ -62,7 +62,7 @@
             }
             else
             {
-                resultadoRegistro = "Error al registrar el Carrito";
+                resultadoRegistro = "Error al registrar el comprar";
             }
         }
         catch (Exception ex)
@@ -73,6 +73,7 @@
 
     void returnIndex()
     {
-        NavManager.NavigateTo("/carrito/index");
+        NavManager.NavigateTo("/comprar/index");
     }
 }
+

@@ -1,42 +1,36 @@
-﻿@page "/carrito/deletecarr/{pId:int}"
+﻿@page "/registro/deletere/{pId:int}"
 @using ProyectoStore.EN;
 @inject HttpClient Http
 @inject NavigationManager NavManager
 
 
-<h3>DeleteCarr</h3>
-<input type="hidden" @bind-value="carrito.Id" />
+<h3>DeleteRegistro</h3>
+<input type="hidden" @bind-value="registro.Id" />
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">NombreDeProducto</label>
-        <input type="text" class="form-control" @bind-value="carrito.NombreDeProducto" readonly/>
+        <label class="form-label">Correo</label>
+        <input type="text" class="form-control" @bind-value="registro.Correo" readonly />
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label">Precio</label>
-        <input type="text" class="form-control" @bind-value="carrito.Precio" readonly />
+        <label class="form-label">Usuario</label>
+        <input type="text" class="form-control" @bind-value="registro.Usuario" readonly />
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm-12">
-        <label class="form-label"> Envio</label>
-        <input type="text" class="form-control" @bind-value="carrito.Envio" readonly/>
+        <label class="form-label"> Contraseña</label>
+        <input type="text" class="form-control" @bind-value="registro.Contraseña" readonly />
     </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-12">
-        <label class="form-label">TotalApagar</label>
-        <input type="text" class="form-control" @bind-value="carrito.TotalApagar" readonly />
-    </div>
-</div>
 
 <div class="row">
     <div class="col-sm-12">
-        <button class="btn btn-danger" @onclick="EliminarCarrito" >Eliminar</button>
+        <button class="btn btn-danger" @onclick="Eliminarregistro" >Eliminar</button>
         <button class="btn btn-secondary" @onclick="returnIndex" >Regresar</button>
     </div>
 </div>
@@ -48,7 +42,7 @@
 
 @code {
 
-      Carrito carrito = new Carrito();
+      Registro registro = new Registro();
     string resultadoModificar = "";
 
     [Parameter]
@@ -58,7 +52,7 @@
     {
         if (pId != 0)
         {
-            carrito = await Http.GetFromJsonAsync<Carrito>("carrito/" + pId);
+            registro = await Http.GetFromJsonAsync<Registro>("Registro/" + pId);
         }
         else
         {
@@ -66,11 +60,11 @@
         }
     }
 
-    public async Task EliminarCarrito()
+    public async Task Eliminarregistro()
     {
         try
         {
-            var resultado = await Http.DeleteAsync("Carrito/" + carrito.Id);
+            var resultado = await Http.DeleteAsync("registro/" + registro.Id);
 
             if (Convert.ToInt32(resultado.StatusCode) == 200)
             {
@@ -78,7 +72,7 @@
             }
             else
             {
-                resultadoModificar = "Error al Modificar el Carrito";
+                resultadoModificar = "Error al Modificar el registro";
             }
         }
         catch (Exception ex)
@@ -89,7 +83,7 @@
 
     void returnIndex()
     {
-        NavManager.NavigateTo("/carrito/index");
+        NavManager.NavigateTo("/registro/index");
     }
 
 }

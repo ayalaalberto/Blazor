@@ -1,0 +1,74 @@
+﻿@page "/registro/registerre"
+@using ProyectoStore.EN;
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+<h3>Registror</h3>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="form-label">Correo</label>
+        <input type="text" class="form-control" @bind="registro.Correo" />
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="form-label">Usuario</label>
+        <input type="text" class="form-control" @bind="registro.Usuario" />
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="form-label">Contraseña</label>
+        <input type="text" class="form-control" @bind="registro.Contraseña" />
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <button class="btn btn-primary" @onclick="Registrarregistro">Guardar</button>
+        <button class="btn btn-secondary" @onclick="returnIndex">Regresar</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <span style="color:red; font-weight:bold;">@resultadoRegistro</span>
+    </div>
+</div>
+@code {
+    Registro registro = new Registro();
+    string resultadoRegistro = "";
+
+    public async Task Registrarregistro()
+    {
+        try
+        {
+            var resultado = await Http.PostAsJsonAsync<Registro>("Registro", registro);
+
+            if (Convert.ToInt32(resultado.StatusCode) == 200)
+            {
+                returnIndex();
+            }
+            else
+            {
+                resultadoRegistro = "Error al registrar el registro";
+            }
+        }
+        catch (Exception ex)
+        {
+            resultadoRegistro = "Ocurrio un error interno";
+        }
+    }
+
+    void returnIndex()
+    {
+        NavManager.NavigateTo("/registro/index");
+    }
+
+}
