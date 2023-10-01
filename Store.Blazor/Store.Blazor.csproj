@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Reference Include="ProyectoStore.EN">
-      <HintPath>..\..\STORE\ProyectoStore\ProyectoStore.EN\bin\Debug\net6.0\ProyectoStore.EN.dll</HintPath>
+      <HintPath>..\..\..\StoreProyecto\ProyectoStore\ProyectoStore.EN\bin\Debug\net6.0\ProyectoStore.EN.dll</HintPath>
     </Reference>
   </ItemGroup>
 

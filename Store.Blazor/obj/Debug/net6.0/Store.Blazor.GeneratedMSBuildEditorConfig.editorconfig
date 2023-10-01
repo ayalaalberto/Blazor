@@ -8,125 +8,161 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Store.Blazor
 build_property.RootNamespace = Store.Blazor
-build_property.ProjectDir = C:\Users\MINEDUCYT\Downloads\STORE_BLAZOR\Store.Blazor\
+build_property.ProjectDir = C:\Users\MINEDUCYT\Documents\Blazor\Blazor\Store.Blazor\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\MINEDUCYT\Downloads\STORE_BLAZOR\Store.Blazor
+build_property.MSBuildProjectDirectory = C:\Users\MINEDUCYT\Documents\Blazor\Blazor\Store.Blazor
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/App.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Administracion/Index.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Administracion/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWNpb25cSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Carrito/DeleteCarr.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Carrito/DeleteCarr.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2Fycml0b1xEZWxldGVDYXJyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Carrito/DetailCarr.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Carrito/DetailCarr.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2Fycml0b1xEZXRhaWxDYXJyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Carrito/Index.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Carrito/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2Fycml0b1xJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Carrito/ModifyCarr.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Carrito/ModifyCarr.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2Fycml0b1xNb2RpZnlDYXJyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Carrito/RegisterCarr.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Carrito/RegisterCarr.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2Fycml0b1xSZWdpc3RlckNhcnIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Comprar/DeleteCom.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Comprar/DeleteCom.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcHJhclxEZWxldGVDb20ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Comprar/DetailCom.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Comprar/DetailCom.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcHJhclxEZXRhaWxDb20ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Comprar/Index.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Comprar/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcHJhclxJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Comprar/ModifyCom.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Comprar/ModifyCom.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcHJhclxNb2RpZnlDb20ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Comprar/RegisterCom.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Comprar/RegisterCom.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcHJhclxSZWdpc3RlckNvbS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Counter.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/FetchData.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Index.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Registro/DeleteRe.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Registro/DeleteRe.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cm9cRGVsZXRlUmUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Registro/DetailRe.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Registro/DetailRe.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cm9cRGV0YWlsUmUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Registro/Index.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Registro/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cm9cSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Registro/ModifyRe.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Registro/ModifyRe.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cm9cTW9kaWZ5UmUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Registro/RegisterRe.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Registro/RegisterRe.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cm9cUmVnaXN0ZXJSZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Rol/Index.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Rol/DeleteRol.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm9sXERlbGV0ZVJvbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Rol/DetailRol.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm9sXERldGFpbFJvbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Rol/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm9sXEluZGV4LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Shared/Menu.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Rol/ModifyRol.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm9sXE1vZGlmeVJvbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Rol/RegisterRol.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm9sXFJlZ2lzdGVyUm9sLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Usuario/DeleteUsuario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb1xEZWxldGVVc3VhcmlvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Usuario/DetailUsuario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb1xEZXRhaWxVc3VhcmlvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Usuario/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb1xJbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Usuario/ModifyUsuario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb1xNb2RpZnlVc3VhcmlvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Usuario/RegisterUsuario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb1xSZWdpc3RlclVzdWFyaW8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Shared/Menu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Shared/SurveyPrompt.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/_Imports.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Shared/MainLayout.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-m5e48uaf19
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Shared/NavMenu.razor]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-wei0cf3fum
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/Error.cshtml]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/_Host.cshtml]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MINEDUCYT/Downloads/STORE_BLAZOR/Store.Blazor/Pages/_Layout.cshtml]
+[C:/Users/MINEDUCYT/Documents/Blazor/Blazor/Store.Blazor/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

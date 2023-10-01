@@ -1,0 +1,110 @@
+﻿@page "/usuario/deleteusuario/{pId:int}"
+@using ProyectoStore.EN;
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+<h3>Eliminar Usuario</h3>
+<EditForm Model="user">
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Rol</label>
+            <input type="hidden" @bind-value="user.Id" />
+            <input type="text" @bind-value="rolNombre" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="idNum1" @bind-value="user.Nombre"  />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="idNum1" @bind-value="user.Apellido"  />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Login</label>
+            <input type="text" class="form-control" id="idNum1" @bind-value="user.Usuarios"  />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Estatus</label>
+                
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-danger" @onclick="EliminarUsuario">Eliminar</button>
+            <button class="btn btn-secondary" @onclick="returnIndex">Regresar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <span style="color:red;font-weight:bold;">@resultadoRegistro</span>
+        </div>
+    </div>
+</EditForm>
+@code {
+    Usuario user = new Usuario();
+    Rol rol = new Rol();
+    string rolNombre = "";
+
+    string resultadoRegistro = "";
+
+    [Parameter]
+    public int pId { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (pId != 0)
+        {
+            user = await Http.GetFromJsonAsync<Usuario>("Usuario/" + pId);
+            if (user.Id > 0)
+            {
+                rol = await Http.GetFromJsonAsync<Rol>("Rol/" + pId);
+                if (rol.Id > 0)
+                {
+                    rolNombre = rol.Nombre;
+                }
+            }
+            else
+            {
+                rolNombre = "";    
+            }
+        }
+        else
+        {
+            resultadoRegistro = "No se encontro el registro seleccionado";
+        }
+    }
+
+    public async Task EliminarUsuario()
+    {
+        try
+        {
+            var resultado = await Http.DeleteAsync("Usuario/" + user.Id);
+
+            if (Convert.ToInt32(resultado.StatusCode) == 200)
+            {
+                returnIndex();
+            }
+            else
+            {
+                resultadoRegistro = "Error al Eliminar el Usuario";
+            }
+        }
+        catch (Exception ex)
+        {
+            resultadoRegistro = "Ocurrio un error interno";
+        }
+    }
+
+    void returnIndex()
+    {
+        NavManager.NavigateTo("/usuario/index");
+    }
+}

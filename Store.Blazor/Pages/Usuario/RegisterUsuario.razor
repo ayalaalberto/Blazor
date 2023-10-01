@@ -1,0 +1,117 @@
+﻿@page "/usuario/registerusuario"
+@using ProyectoStore.EN;
+@using Store.Blazor.Data;
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+<h3>Registrar Usuario</h3>
+<EditForm Model="user">
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Rol</label>
+            <InputSelect id="rolesCombo" @bind-Value="user.IdRol" class="form-select">
+                @foreach (var rol in rolesCombo)
+                {
+                    <option value="@rol.Id">@rol.Nombre</option>
+                }
+            </InputSelect>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="idNum1" @bind="user.Nombre" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="idNum1" @bind="user.Apellido" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Login</label>
+            <input type="text" class="form-control" id="idNum1" @bind="user.Usuarios" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" id="idNum1" @bind="user.Contraseña" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="idNum1" @bind="user.ConfirmContraseña_Aux" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Estatus</label>
+            <InputSelect id="estatus" @bind-Value="user.Estatus" class="form-select">
+                @foreach (var estado in estatus)
+                {
+                    <option value="@estado.Id">@estado.Nombre</option>
+                }
+            </InputSelect>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-primary" @onclick="RegistrarUsuario">Guardar</button>
+            <button class="btn btn-secondary" @onclick="returnIndex">Regresar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <span style="color:red;font-weight:bold;">@resultadoRegistro</span>
+        </div>
+    </div>
+</EditForm>
+@code {
+    List<Rol> rolesCombo = new List<Rol>();
+    List<Estatus> estatus = new List<Estatus>();
+    Usuario user = new Usuario();
+
+    string resultadoRegistro = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        rolesCombo = await Http.GetFromJsonAsync<List<Rol>>("Rol");
+
+        Estatus estatus0 = new Estatus { Id = 0, Nombre = "-----SELECCIONAR-----"};
+        Estatus estatus1 = new Estatus { Id = 1, Nombre = "ACTIVO" };
+        Estatus estatus2 = new Estatus { Id = 1, Nombre = "INACTIVO" };
+        estatus.Add(estatus0);
+        estatus.Add(estatus1);
+        estatus.Add(estatus2);
+    }
+
+    public async Task RegistrarUsuario()
+    {
+        try
+        {
+            var resultado = await Http.PostAsJsonAsync<Usuario>("Usuario", user);
+
+            if (Convert.ToInt32(resultado.StatusCode) == 200)
+            {
+                returnIndex();
+            }
+            else
+            {
+                resultadoRegistro = "Error al registrar el Usuario";
+            }
+        }
+        catch (Exception ex)
+        {
+            resultadoRegistro = "Ocurrio un error interno";
+        }
+    }
+
+    void returnIndex()
+    {
+        NavManager.NavigateTo("/usuario/index");
+    }
+}

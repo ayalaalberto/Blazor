@@ -1,0 +1,93 @@
+﻿@page "/usuario/index"
+@using ProyectoStore.EN;
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+<h3>Index</h3>
+<button class="btn btn-primary" @onclick="newUsuario">Nuevo</button>
+@if (usuarios == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Login</th>
+                <th>Rol</th>
+                <th>Estatus</th>
+                <th>Fecha Registro</th>
+                <th colspan="3">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in usuarios)
+            {
+                <tr>
+                    <td>@user.Nombre</td>
+                    <td>@user.Apellido</td>
+                    <td>@user.Usuarios</td>
+                    <td>@user.Rol.Nombre</td>
+                    @if (user.Estatus == 1)
+                    {
+                        <td>ACTIVO</td>
+                    }
+                    else
+                    {
+                        <td>INACTIVO</td>
+                    }
+                    <td>@user.FechaRegistro</td>
+                    <td>
+                        <button class="btn btn-success"
+                        @onclick="(() => goModify(user.Id))">
+                            Modificar
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger"
+                        @onclick="(() => goDelete(user.Id))">
+                            Eliminar
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info"
+                        @onclick="(() => goDetail(user.Id))">
+                            Ver
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private Usuario[]? usuarios;
+
+    protected override async Task OnInitializedAsync()
+    {
+        usuarios = await Http.GetFromJsonAsync<Usuario[]>("Usuario");
+    }
+
+    void newUsuario()
+    {
+        NavManager.NavigateTo("/usuario/registerusuario");
+    }
+
+    void goModify(int pId)
+    {
+        NavManager.NavigateTo($"/usuario/modifyusuario/{pId}");
+    }
+
+    void goDelete(int pId)
+    {
+        NavManager.NavigateTo($"/usuario/deleteusuario/{pId}");
+    }
+
+    void goDetail(int pId)
+    {
+        NavManager.NavigateTo($"/usuario/detailusuario/{pId}");
+    }
+}

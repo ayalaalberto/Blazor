@@ -1,0 +1,120 @@
+﻿@page "/usuario/modifyusuario/{pId:int}"
+@using ProyectoStore.EN;
+@using Store.Blazor.Data;
+@inject HttpClient Http
+@inject NavigationManager NavManager
+<h3>Modificar Usuario</h3>
+
+<EditForm Model="user">
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Rol</label>
+            <InputSelect id="rolesCombo" @bind-Value="user.IdRol" class="form-select">
+                @foreach (var rol in rolesCombo)
+                {
+                    <option value="@rol.Id">@rol.Nombre</option>
+                }
+            </InputSelect>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12"> 
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="idNum1" @bind-value="user.Nombre" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="idNum1" @bind-value="user.Apellido" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Login</label>
+            <input type="text" class="form-control" id="idNum1" @bind-value="user.Usuarios" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="form-label">Estatus</label>
+            <InputSelect id="estatus" @bind-Value="user.Estatus" class="form-select">
+                @foreach (var estado in estatus)
+                {
+                    <option value="@estado.Id">@estado.Nombre</option>
+                }
+            </InputSelect>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-success" @onclick="ModificarUsuario">Modificar</button>
+            <button class="btn btn-secondary" @onclick="returnIndex">Regresar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <span style="color:red;font-weight:bold;">@resultadoRegistro</span>
+        </div>
+    </div>
+</EditForm>
+@code {
+    List<Rol> rolesCombo = new List<Rol>();
+    List<Estatus> estatus = new List<Estatus>();
+    Usuario user = new Usuario();
+
+    string resultadoRegistro = "";
+
+    [Parameter]
+    public int pId { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (pId != 0)
+        {
+            user = await Http.GetFromJsonAsync<Usuario>("Usuario/" + pId);
+        }
+        else
+        {
+            resultadoRegistro = "No se encontro el registro seleccionado";
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        rolesCombo = await Http.GetFromJsonAsync<List<Rol>>("Rol");
+
+        Estatus estatus0 = new Estatus { Id = 0, Nombre = "-----SELECCIONAR-----" };
+        Estatus estatus1 = new Estatus { Id = 1, Nombre = "ACTIVO" };
+        Estatus estatus2 = new Estatus { Id = 2, Nombre = "INACTIVO" };
+        estatus.Add(estatus0);
+        estatus.Add(estatus1);
+        estatus.Add(estatus2);
+    }
+
+    public async Task ModificarUsuario()
+    {
+        try
+        {
+            var resultado = await Http.PutAsJsonAsync<Usuario>("Usuario/" + user.Id, user);
+
+            if (Convert.ToInt32(resultado.StatusCode) == 200)
+            {
+                returnIndex();
+            }
+            else
+            {
+                resultadoRegistro = "Error al Modificar el Usuario";
+            }
+        }
+        catch (Exception ex)
+        {
+            resultadoRegistro = "Ocurrio un error interno";
+        }
+    }
+
+    void returnIndex()
+    {
+        NavManager.NavigateTo("/usuario/index");
+    }
+}

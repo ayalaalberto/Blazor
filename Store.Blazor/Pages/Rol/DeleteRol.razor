@@ -1,0 +1,69 @@
+﻿@page "/rol/deleterol/{pId:int}"
+@using ProyectoStore.EN;
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+<h3>DeleteRol</h3>
+<input type="hidden" @bind-value="rol.Id" />
+<div class="row">
+    <div class="col-sm-12">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" @bind-value="rol.Nombre" readonly/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <button class="btn btn-danger" @onclick="EliminarRol" >Eliminar</button>
+        <button class="btn btn-secondary" @onclick="returnIndex" >Regresar</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <span style="color:red; font-weight:bold;">@resultadoModificar</span>
+    </div>
+</div>
+@code {
+    Rol rol = new Rol();
+    string resultadoModificar = "";
+
+    [Parameter]
+    public int pId { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (pId != 0)
+        {
+            rol = await Http.GetFromJsonAsync<Rol>("Rol/" + pId);
+        }
+        else
+        {
+            resultadoModificar = "No se encontro el registro seleccionado";
+        }
+    }
+
+    public async Task EliminarRol()
+    {
+        try
+        {
+            var resultado = await Http.DeleteAsync("Rol/" + rol.Id);
+
+            if (Convert.ToInt32(resultado.StatusCode) == 200)
+            {
+                returnIndex();
+            }
+            else
+            {
+                resultadoModificar = "Error al Modificar el Rol";
+            }
+        }
+        catch (Exception ex)
+        {
+            resultadoModificar = "Ocurrio un error interno";
+        }
+    }
+
+    void returnIndex()
+    {
+        NavManager.NavigateTo("/rol/index");
+    }
+}
