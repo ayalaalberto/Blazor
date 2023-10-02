@@ -1,0 +1,92 @@
+﻿@page "/tablet/deletetablets/{pId:int}"
+@using ProyectoStore.EN;
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+
+<h3>DeleteTablet</h3>
+<input type="hidden" @bind-value="tablet.Id" />
+<div class="row">
+    <div class="col-sm-12">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" @bind-value="tablet.Nombre" readonly />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="form-label">Detalle</label>
+        <input type="text" class="form-control" @bind-value="tablet.Detalle" readonly />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="form-label"> precio</label>
+        <input type="text" class="form-control" @bind-value="tablet.Precio" readonly />
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <button class="btn btn-danger" @onclick="Eliminartablet">Eliminar</button>
+        <button class="btn btn-secondary" @onclick="returnIndex">Regresar</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <span style="color:red; font-weight:bold;">@resultadoModificar</span>
+    </div>
+</div>
+
+@code {
+
+    Tablets tablet = new Tablets();
+    string resultadoModificar = "";
+
+    [Parameter]
+    public int pId { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (pId != 0)
+        {
+            tablet = await Http.GetFromJsonAsync<tablet>("tablet/" + pId);
+        }
+        else
+        {
+            resultadoModificar = "No se encontro el registro seleccionado";
+        }
+    }
+
+    public async Task Eliminartablet()
+    {
+        try
+        {
+            var resultado = await Http.DeleteAsync("tablet/" + tablet.Id);
+
+            if (Convert.ToInt32(resultado.StatusCode) == 200)
+            {
+                returnIndex();
+            }
+            else
+            {
+                resultadoModificar = "Error al Modificar el tablet";
+            }
+        }
+        catch (Exception ex)
+        {
+            resultadoModificar = "Ocurrio un error interno";
+        }
+    }
+
+    void returnIndex()
+    {
+        NavManager.NavigateTo("/tablet/index");
+    }
+
+}
+
+

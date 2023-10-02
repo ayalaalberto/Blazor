@@ -1,0 +1,88 @@
+﻿@page "/smartphone/index"
+@using ProyectoStore.EN;
+@inject HttpClient Http;
+@inject NavigationManager NavManager;
+<PageTitle>SmartPhone</PageTitle>
+<button class="btn btn-primary" @onclick="newSmartPhone">Nuevo SmartPhone</button>
+
+<h3>Buscar</h3>
+
+@if (smartphones == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Detalle</th>
+                <th>Precio</th>
+                <th colspan="3">Acciones</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var smartphone in smartphones)
+            {
+                <tr>
+                    <td>@smartphone.Nombre</td>
+                    <td>@smartphone.Detalle</td>
+                    <td>@smartphone.Precio</td>
+                  
+                    <td>
+                        <button class="btn btn-success"
+                        @onclick="(() => goModify(smartphone.Id))">
+                            Modificar
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger"
+                        @onclick="(() => goDelete(smartphone.Id))">
+                            Eliminar
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info"
+                        @onclick="(() => goDetail(smartphone.Id))">
+                            Ver
+                        </button>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private SmartPhone[]? smartphones;
+
+    protected override async Task OnInitializedAsync()
+    {
+        smartphones = await Http.GetFromJsonAsync<SmartPhone[]>("SmartPhone");
+    }
+
+    void newSmartPhone()
+    {
+        NavManager.NavigateTo("/smarthphone/registerphone");
+    }
+
+    void goModify(int pId)
+    {
+        NavManager.NavigateTo($"/smarthphone/modifyphone/{pId}");
+    }
+
+    void goDelete(int pId)
+    {
+        NavManager.NavigateTo($"/smarthphone/deletephone/{pId}");
+    }
+
+    void goDetail(int pId)
+    {
+        NavManager.NavigateTo($"/smarthphone/detailphone/{pId}");
+    }
+
+}

@@ -1,0 +1,89 @@
+﻿@page "/tablet/index"
+@using ProyectoStore.EN;
+@inject HttpClient Http;
+@inject NavigationManager NavManager;
+<PageTitle>SmartPhone</PageTitle>
+<button class="btn btn-primary" @onclick="newTablets">Nueva Tablets</button>
+
+<h3>Buscar</h3>
+
+@if (tables == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Detalle</th>
+                <th>Precio</th>
+                <th colspan="3">Acciones</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var tablet in tablets)
+            {
+                <tr>
+                    <td>@smartphone.Nombre</td>
+                    <td>@smartphone.Detalle</td>
+                    <td>@smartphone.Precio</td>
+                  
+                    <td>
+                        <button class="btn btn-success"
+                        @onclick="(() => goModify(tablet.Id))">
+                            Modificar
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger"
+                        @onclick="(() => goDelete(tablet.Id))">
+                            Eliminar
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info"
+                        @onclick="(() => goDetail(tablet.Id))">
+                            Ver
+                        </button>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private Tablets[]? tablets;
+
+    protected override async Task OnInitializedAsync()
+    {
+        tablets = await Http.GetFromJsonAsync<Tablets[]>("Tablets");
+    }
+
+    void newTablet()
+    {
+        NavManager.NavigateTo("/tablet/registertablets");
+    }
+
+    void goModify(int pId)
+    {
+        NavManager.NavigateTo($"/tabletmodifytablets/{pId}");
+    }
+
+    void goDelete(int pId)
+    {
+        NavManager.NavigateTo($"/tablet/deletetablets/{pId}");
+    }
+
+    void goDetail(int pId)
+    {
+        NavManager.NavigateTo($"/tablet/detailtablets/{pId}");
+    }
+
+}
+
